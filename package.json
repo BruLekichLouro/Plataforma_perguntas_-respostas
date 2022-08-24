@@ -11,15 +11,20 @@
     "url": "git+ssh://git@github.com/BruLekichLouro/Plataforma_perguntas_-respostas.git"
   },
   "keywords": [
-    "nodeja",
+    "nodejs",
     "html",
     "css",
-    "javaScript"
+    "javaScript",
+    "express"
   ],
   "author": "Bruna Lekich Louro",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/BruLekichLouro/Plataforma_perguntas_-respostas/issues"
   },
-  "homepage": "https://github.com/BruLekichLouro/Plataforma_perguntas_-respostas#readme"
+  "homepage": "https://github.com/BruLekichLouro/Plataforma_perguntas_-respostas#readme",
+  "dependencies": {
+    "ejs": "^3.1.8",
+    "express": "^4.18.1"
+  }
 }
