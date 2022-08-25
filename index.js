@@ -8,24 +8,10 @@ app.set('view engine', 'ejs');
 app.use(express.static('public'));
 
 //Criando rota:
-app.get("/:nome/:lang",(req,res) => {
-    var nome = req.params.nome; //parametros obrigatórios
-    var lang = req.params.lang;
-    var exibirMsg = false;
-
-    var produtos = [
-        {nome:"Doritos", preco: 3.14},
-        {nome: "Tortinhas", preco: 2.5},
-        {nome: "Leite", preco: 5.20},
-        {nome: "chocolate", preco: 7}
-    ]
-
+app.get("/",(req,res) => {
+    
     res.render("index", { //passando valores que vou mostrar no html
-        nome:nome,
-        lang: lang,
-        empresa: "Byjus",
-        msg: exibirMsg,
-        produtos: produtos
+        
     });
 });
 
