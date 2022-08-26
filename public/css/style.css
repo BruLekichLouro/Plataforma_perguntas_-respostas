@@ -3,6 +3,9 @@ body{
 
 }
 #perguntar{
-    border-color: green;
+    border-color: darkgrey;
     
+}
+#formulario-perguntas{
+    margin-top: 5vh;
 }

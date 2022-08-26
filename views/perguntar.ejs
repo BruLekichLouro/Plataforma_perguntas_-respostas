@@ -9,10 +9,36 @@
     <title>Plataforma perguntas e erespostas</title>
 </head>
 <body>
+    
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/">Navbar w/ text</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Features</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Pricing</a>
+              </li>
+            </ul>
+            <span class="navbar-text">
+              Navbar text with an inline element
+            </span>
+          </div>
+        </div>
+      </nav>    
+
    <div class="container">
     <h1>Plataforma de perguntas</h1>
     <hr>
-    <div class="card">
+    <div class="card" id="formulario-perguntas"  >
         <div class="card-header">
             <h3> Realizar pergunta:</h3>
         </div>
@@ -24,7 +50,7 @@
                 <label>Pergunta</label>
                 <textarea name="pergunta" placeholder="Escreva sua pergunta aqui" class="form-control"></textarea>
                 <br>
-                <button type="button" class="btn btn-outline-success" data-bs-toggle="button" id="perguntar" >Perguntar</button>
+                <button type="button" class="btn btn-outline-dark" data-bs-toggle="button" id="perguntar" >Perguntar</button>
                 <br>
             </form>
         </div>
