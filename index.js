@@ -9,11 +9,12 @@ app.use(express.static('public'));
 
 //Criando rota:
 app.get("/",(req,res) => {
-    
-    res.render("index", { //passando valores que vou mostrar no html
-        
-    });
+    res.render("index");
 });
+
+app.get("/perguntar", (req, res)=> {
+    res.render("perguntar");
+})
 
 //Criando servidor:
 app.listen(8080, () =>{console.log("App rodando!");});
