@@ -1,23 +1,26 @@
+<%- include('partials/header.ejs') %>
 <body>
+    <%- include('partials/navbar.ejs') %>
    <div class="container">
     <h1>Plataforma de perguntas</h1>
     <hr>
-    <div class="card" id="formulario-perguntas"  >
+    <div class="card" id="formulario-perguntas">
         <div class="card-header">
             <h3> Realizar pergunta:</h3>
         </div>
         <div class="card-body">
-            <form>
+            <form method="POST" action="/salvarpergunta"> <!--action="/salvarpergunta" é a rota pra onde serão enviados os dados-->
                 <label>Título</label>
-                <input type="text" placeholder="Título" class="form-control"id="pergunta">
+                <input type="text" placeholder="Título" class="form-control" name="titulo">
                 <br>
-                <label>Pergunta</label>
-                <textarea name="pergunta" placeholder="Escreva sua pergunta aqui" class="form-control"></textarea>
+                <label> Pergunta </label>
+                <textarea  placeholder="Escreva sua pergunta aqui" class="form-control" name="descricao" ></textarea>
                 <br>
-                <button type="button" class="btn btn-outline-dark" data-bs-toggle="button" id="perguntar" >Perguntar</button>
+                <button type="submit" class="btn btn-outline-dark" data-bs-toggle="button" > Perguntar </button>
                 <br>
             </form>
         </div>
     </div>
    </div>    
 </body>
+<%- include('partials/footer.ejs') %>
