@@ -15,7 +15,8 @@
     "html",
     "css",
     "javaScript",
-    "express"
+    "express",
+    "ejs"
   ],
   "author": "Bruna Lekich Louro",
   "license": "ISC",

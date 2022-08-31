@@ -2,10 +2,13 @@ body{
     background-color: aquamarine;
 
 }
-#perguntar{
-    border-color: darkgrey;
+#btn-perguntar{
+    border-color: darkgreen;
     
 }
 #formulario-perguntas{
-    margin-top: 5vh;
+    margin-top: 10vh;
+}
+#titulo{
+    margin-top: 10vh;
 }

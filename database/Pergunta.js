@@ -8,7 +8,7 @@ const connection = require("./database");
 //Definindo o model = ...define(nometabela, { json})
 const Pergunta = connection.define('perguntas',{
     titulo:{
-        type:Sequelize.STRING, //tipo vai se um texto então usamos string
+        type:Sequelize.STRING, //tipo vai ser um texto então usamos string
         allowNull: false //impede que campo receba valores falsos
     },
     descricao:{
@@ -19,3 +19,6 @@ const Pergunta = connection.define('perguntas',{
 
 //Sincronizando Pergunta.js com o BD: se a tabela ainda não existir no BD, ele vai criar. Se já existir, nada acontece.
 Pergunta.sync({force:false}).then(() => {});
+
+//exportando:
+module.exports = Pergunta;

@@ -2,7 +2,7 @@ const express = require("express"); //importando
 const app = express(); //criando instancia
 const bodyParser = require("body-parser");
 const connection = require("./database/database");
-const perguntaModel = require("./database/Pergunta");
+const Pergunta = require("./database/Pergunta");//importando Model de perguntas
 
 //Database:
 connection
@@ -30,7 +30,12 @@ app.use(express.text());
 
 //Criando rota:
 app.get("/",(req,res) => {
-    res.render("index");
+    //findAll() = SELECT * FROM PERGUNTAS.Lista as perguntas e manda pra dentro do then()
+    Pergunta.findAll({raw:true}).then(perguntas => {//raw: pega os dados crus, sem mais nada
+        res.render("index",{
+            perguntas:perguntas
+        });
+    }); 
 });
 
 app.get("/perguntar", (req, res)=> {
@@ -39,9 +44,16 @@ app.get("/perguntar", (req, res)=> {
 
 //Rota com .post para receber dados do form:
 app.post("/salvarpergunta", (req, res) =>{
+
     var titulo = req.body.titulo; //body-parser disponibiliza objetos do body pra gente
     var descricao = req.body.descricao;
-    res.send("formulario recebido titulo "+ titulo + " " + "descricao" + descricao);
+    //create() = salva pergunta no BD = INSERT INTO Perguntas..
+    Pergunta.create({
+        titulo: titulo,
+        descricao: descricao
+    }).then(()=>{
+        res.redirect("/"); //redireciono à página principal
+    })
 });
 
 //Criando servidor:
