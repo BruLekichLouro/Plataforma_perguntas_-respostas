@@ -31,7 +31,9 @@ app.use(express.text());
 //Criando rota:
 app.get("/",(req,res) => {
     //findAll() = SELECT * FROM PERGUNTAS.Lista as perguntas e manda pra dentro do then()
-    Pergunta.findAll({raw:true}).then(perguntas => {//raw: pega os dados crus, sem mais nada
+    Pergunta.findAll({raw:true, order:[
+        ['id','DESC'] //ordenar o id de forma decrescente, posso fazer o mesmo com titulo
+    ]}).then(perguntas => {//raw: pega os dados crus, sem mais nada
         res.render("index",{
             perguntas:perguntas
         });
@@ -55,6 +57,20 @@ app.post("/salvarpergunta", (req, res) =>{
         res.redirect("/"); //redireciono à página principal
     })
 });
+
+app.get("/pergunta/:id", (req, res) => {
+    var id = req.params.id;
+    Pergunta.findOne({
+        //Usar o where para criar uma condição
+        where:{id:id} //json vai buscar no BD uma pergunta que tenha o id igual a var id
+    }).then(pergunta => { //dps que faz a busca , o then retorna algo
+        if(pergunta != undefined){
+            res.render('pergunta')
+        }else{
+            res.redirect('/'); //redirecionar para página principal
+        }
+    })
+})
 
 //Criando servidor:
 app.listen(8080, () =>{console.log("App rodando!");});
