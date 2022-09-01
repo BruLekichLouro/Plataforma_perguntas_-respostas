@@ -63,7 +63,7 @@ app.get("/pergunta/:id", (req, res) => {
     Pergunta.findOne({
         //Usar o where para criar uma condição
         where:{id:id} //json vai buscar no BD uma pergunta que tenha o id igual a var id
-    }).then(pergunta => { //dps que faz a busca , o then retorna algo
+    }).then(pergunta => { //dps que faz a busca , o then retorna algo (a pergunta)
         if(pergunta != undefined){
             res.render('pergunta', {
                 pergunta:pergunta
