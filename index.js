@@ -65,7 +65,9 @@ app.get("/pergunta/:id", (req, res) => {
         where:{id:id} //json vai buscar no BD uma pergunta que tenha o id igual a var id
     }).then(pergunta => { //dps que faz a busca , o then retorna algo
         if(pergunta != undefined){
-            res.render('pergunta')
+            res.render('pergunta', {
+                pergunta:pergunta
+            });
         }else{
             res.redirect('/'); //redirecionar para página principal
         }
