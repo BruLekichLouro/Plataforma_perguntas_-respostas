@@ -59,6 +59,7 @@ app.post("/salvarpergunta", (req, res) =>{
     })
 });
 
+//Rota para mostrar as perguntas e respostas na tela:
 app.get("/pergunta/:id", (req, res) => {
     var id = req.params.id;
     Pergunta.findOne({
@@ -66,8 +67,16 @@ app.get("/pergunta/:id", (req, res) => {
         where:{id:id} //json vai buscar no BD uma pergunta que tenha o id igual a var id
     }).then(pergunta => { //dps que faz a busca , o then retorna algo (a pergunta)
         if(pergunta != undefined){
-            res.render('pergunta', {
-                pergunta:pergunta
+
+            Resposta.findAll({
+                where:{perguntaId:pergunta.id},
+                order:[
+                    ['id','DESC']]
+            }).then(respostas => { //respostas são salvas em um array
+                res.render('pergunta', {
+                    pergunta:pergunta,
+                    respostas:respostas
+                }); 
             });
         }else{
             res.redirect('/'); //redirecionar para página principal
@@ -75,7 +84,7 @@ app.get("/pergunta/:id", (req, res) => {
     })
 });
 
-//Rota para enviar os dados do form
+//Rota para enviar as prespostas do form para o bd:
 app.post("/responder",(req, res)=>{
     var corpo= req.body.corpo //recebo o conteúdo
     var perguntaId= req.body.pergunta //recebo o id
