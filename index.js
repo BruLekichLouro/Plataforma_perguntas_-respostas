@@ -43,7 +43,7 @@ app.get("/",(req,res) => {
 
 app.get("/perguntar", (req, res)=> {
     res.render("perguntar");
-})
+});
 
 //Rota com .post para receber dados do form:
 app.post("/salvarpergunta", (req, res) =>{
@@ -73,7 +73,19 @@ app.get("/pergunta/:id", (req, res) => {
             res.redirect('/'); //redirecionar para página principal
         }
     })
-})
+});
+
+//Rota para enviar os dados do form
+app.post("/responder",(req, res)=>{
+    var corpo= req.body.corpo //recebo o conteúdo
+    var perguntaId= req.body.pergunta //recebo o id
+    Resposta.create({
+        corpo: corpo,
+        perguntaId: perguntaId
+    }).then(()=>{ //qdo responder a pergunta vou redirecionar o usuário para a pág da pergunta
+        res.redirect("/pergunta/"+perguntaId);
+    });
+});
 
 //Criando servidor:
 app.listen(8080, () =>{console.log("App rodando!");});
